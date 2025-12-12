@@ -82,16 +82,24 @@ export default function () {
                             className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow"
                         >
                             <div className="flex items-start gap-2">
-<pre className="whitespace-pre-wrap break-all font-sans text-gray-800 dark:text-white flex-1">
-  {note.text}
-</pre>
-                                <div className="flex gap-2">
+                                <div
+                                    lang="en"
+                                    className="whitespace-pre-wrap break-words font-sans text-gray-800 dark:text-white flex-1"
+                                    style={{ hyphens: "auto", overflowWrap: "anywhere" }}
+                                >
+                                    {note.text}
+                                </div>
+                                <div className="flex gap-2 items-start">
                                     <button
                                         onClick={() => copyToClipboard(note.text)}
-                                        className="text-blue-500 hover:text-blue-700 px-2 py-1 text-sm"
+                                        className="text-blue-500 hover:text-blue-700 p-2 rounded transition"
                                         title="Copy note"
+                                        aria-label="Copy note"
                                     >
-                                        Copy
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 5H8a2 2 0 00-2 2v8" />
+                                        </svg>
                                     </button>
                                     <Form method="post">
                                         <input type="hidden" name="id" value={note.id} />
@@ -99,9 +107,13 @@ export default function () {
                                             type="submit"
                                             name="intent"
                                             value="delete"
-                                            className="text-red-500 hover:text-red-700 px-2 py-1 text-sm"
+                                            className="text-red-500 hover:text-red-700 p-2 rounded transition"
+                                            title="Delete note"
+                                            aria-label="Delete note"
                                         >
-                                            Delete
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M10 3h4a1 1 0 011 1v2H9V4a1 1 0 011-1z" />
+                                            </svg>
                                         </button>
                                     </Form>
                                 </div>
